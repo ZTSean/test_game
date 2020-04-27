@@ -5,8 +5,12 @@ using UnityEngine;
 public class DrogDrop : MonoBehaviour
 {
     public GameObject tableSlot;
+    public Sprite initialSprite;
+    public Sprite draggedSprite;
+    public Sprite actionSprite;
     Vector2 initialPosition;
     private bool isDragging;
+    private float scale;
 
     void Start()
     {
@@ -17,6 +21,10 @@ public class DrogDrop : MonoBehaviour
     {
         Debug.Log("start dragging");
         isDragging = true;
+        if (isDragging)
+        {
+            ChangeSprite(draggedSprite);
+        }
     }
 
     private void OnMouseUp()
@@ -28,13 +36,15 @@ public class DrogDrop : MonoBehaviour
             if (polygonCollider2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
             {
                 Debug.Log("Detect table");
-                this.gameObject.transform.position = tableSlot.transform.position;
+                changePosition(tableSlot.transform.position);
                 // TODO: change to seat sprite
+                ChangeSprite(actionSprite);
             }
             else
             {
                 Debug.Log("Reset to initial position");
-                this.gameObject.transform.position = initialPosition;
+                changePosition(initialPosition);
+                ChangeSprite(initialSprite);
             }
         }
         isDragging = false;
@@ -44,8 +54,18 @@ public class DrogDrop : MonoBehaviour
     {
         if (isDragging)
         {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            transform.Translate(mousePosition);
+            changePosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
+    }
+
+    private void ChangeSprite(Sprite sprite)
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+
+    private void changePosition(Vector3 newPos)
+    {
+        Vector2 diff = newPos - transform.position;
+        transform.Translate(diff);
     }
 }

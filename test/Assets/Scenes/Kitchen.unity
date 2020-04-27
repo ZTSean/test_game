@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 141638472}
   - component: {fileID: 141638475}
   m_Layer: 0
-  m_Name: "\u7A7A\u72B6\u6001"
+  m_Name: avatar1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,6 +153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tableSlot: {fileID: 487689831}
+  initialSprite: {fileID: 21300000, guid: 5cd303e11c4a09d4599703f8f2074bca, type: 3}
+  draggedSprite: {fileID: 21300000, guid: 1f2ea04c572fff841962c0a63f36cbe4, type: 3}
+  actionSprite: {fileID: 21300000, guid: efbf7a71a3afa1d4988edcc8f74fa3c3, type: 3}
 --- !u!212 &141638473
 SpriteRenderer:
   m_ObjectHideFlags: 0
