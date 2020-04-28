@@ -5,12 +5,9 @@ using UnityEngine;
 public class DrogDrop : MonoBehaviour
 {
     public GameObject tableSlot;
-    public Sprite initialSprite;
-    public Sprite draggedSprite;
-    public Sprite actionSprite;
+    public Animator animator;
     Vector2 initialPosition;
     private bool isDragging;
-    private float scale;
 
     void Start()
     {
@@ -23,7 +20,7 @@ public class DrogDrop : MonoBehaviour
         isDragging = true;
         if (isDragging)
         {
-            ChangeSprite(draggedSprite);
+            ChangeAnimation("isDragging", true);
         }
     }
 
@@ -38,13 +35,15 @@ public class DrogDrop : MonoBehaviour
                 Debug.Log("Detect table");
                 changePosition(tableSlot.transform.position);
                 // TODO: change to seat sprite
-                ChangeSprite(actionSprite);
+                ChangeAnimation("isEating", true);
+                ChangeAnimation("isDragging", false);
             }
             else
             {
                 Debug.Log("Reset to initial position");
                 changePosition(initialPosition);
-                ChangeSprite(initialSprite);
+                ChangeAnimation("isInitial", true);
+                ChangeAnimation("isDragging", false);
             }
         }
         isDragging = false;
@@ -58,9 +57,9 @@ public class DrogDrop : MonoBehaviour
         }
     }
 
-    private void ChangeSprite(Sprite sprite)
+    private void ChangeAnimation(string flagName, bool value)
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
+        animator.SetBool(flagName, value);
     }
 
     private void changePosition(Vector3 newPos)
