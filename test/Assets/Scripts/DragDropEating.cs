@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrogDrop : MonoBehaviour
+public class DragDropEating : MonoBehaviour
 {
     public GameObject tableSlot;
     public Animator animator;
@@ -34,7 +34,6 @@ public class DrogDrop : MonoBehaviour
             {
                 Debug.Log("Detect table");
                 changePosition(tableSlot.transform.position);
-                // TODO: change to seat sprite
                 ChangeAnimation("isEating", true);
                 ChangeAnimation("isDragging", false);
             }

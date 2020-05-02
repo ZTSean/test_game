@@ -236,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tableSlot: {fileID: 487689831}
   animator: {fileID: 141638476}
+  dropAnimationFlagName: isEating
 --- !u!212 &141638473
 SpriteRenderer:
   m_ObjectHideFlags: 0
