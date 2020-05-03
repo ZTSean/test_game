@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16da35ef5fbbcbf4aa1d24686a3f759d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Kitchen
+  sceneName: Cafe
 --- !u!60 &194415060
 PolygonCollider2D:
   m_ObjectHideFlags: 0
