@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dorm.unity
     guid: ea3e591ed683c164e8d14354e0a884df
+  - enabled: 1
+    path: Assets/Scenes/Factory.unity
+    guid: 4638e54ae770a6d4b87aa2b4f957632e
   m_configObjects: {}

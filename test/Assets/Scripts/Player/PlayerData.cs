@@ -19,5 +19,9 @@ public class PlayerData
         materialAmount = 0;
         energyAmount = 0;
         cafeLevel = 0;
+        dormLevel = 0;
+        factoryLevel = 0;
+        level = 0;
+        numberOfAvatars = 3;
     }
 }
