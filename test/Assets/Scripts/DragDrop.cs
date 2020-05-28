@@ -25,7 +25,7 @@ public class DragDrop : MonoBehaviour
         isDragging = true;
         if (isDragging)
         {
-            ChangeAnimation("isDragging", true);
+            ChangeAnimation(ANIMATOR_IS_DRAGGING_PROPERTY_NAME, true);
         }
     }
 
@@ -34,20 +34,23 @@ public class DragDrop : MonoBehaviour
         if (isDragging)
         {
             Debug.Log("Release mouse");
+            bool isDroppedToSlot = false;
             foreach (Slot slot in envManage.slots)
             {
-                PolygonCollider2D polygonCollider2D = slot.GetComponent<PolygonCollider2D>();
+                PolygonCollider2D polygonCollider2D = slot.gameObject.GetComponent<PolygonCollider2D>();
                 if (polygonCollider2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
                 {
                     OnMouseUpActionTriggered(slot);
-                }
-                else
-                {
-                    OnMouseUpNoActionTriggered();
+                    isDroppedToSlot = true;
+                    break;
                 }
             }
+            if (!isDroppedToSlot)
+            {
+                OnMouseUpNoActionTriggered();
+            }
+            isDragging = false;
         }
-        isDragging = false;
     }
 
     private void Update()
@@ -80,7 +83,8 @@ public class DragDrop : MonoBehaviour
     protected virtual void OnMouseUpNoActionTriggered()
     {
         Debug.Log("No slot delected. Reset to initial position");
-        ChangePosition(initialPosition);
         ChangeAnimation(ANIMATOR_IS_DRAGGING_PROPERTY_NAME, false);
+        ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME, false);
+        ChangePosition(initialPosition);
     }
 }
