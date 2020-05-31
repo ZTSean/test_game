@@ -2791,7 +2791,7 @@ PrefabInstance:
     - target: {fileID: -6753567779850774290, guid: fdba3b33363f4cf4397fc3a0d3932109,
         type: 3}
       propertyPath: m_Name
-      value: Momo_eating
+      value: Momo_eating_left
       objectReference: {fileID: 0}
     - target: {fileID: -5903410836380170252, guid: fdba3b33363f4cf4397fc3a0d3932109,
         type: 3}
