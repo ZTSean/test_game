@@ -170,7 +170,6 @@ MonoBehaviour:
   avatarIndex: 2
   animator: {fileID: 234105534}
   envManage: {fileID: 1577416607}
-  dropSprite: {fileID: 0}
 --- !u!95 &234105534
 Animator:
   serializedVersion: 3
@@ -532,7 +531,6 @@ MonoBehaviour:
   avatarIndex: 0
   animator: {fileID: 710165439}
   envManage: {fileID: 1577416607}
-  dropSprite: {fileID: 0}
 --- !u!95 &710165439
 Animator:
   serializedVersion: 3
@@ -543,7 +541,7 @@ Animator:
   m_GameObject: {fileID: 710165436}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 934c53ff6a5b1264e8882eebe4087142, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7767f1754d8791642bdf0de122f0cf7f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -738,7 +736,6 @@ MonoBehaviour:
   avatarIndex: 1
   animator: {fileID: 821030696}
   envManage: {fileID: 1577416607}
-  dropSprite: {fileID: 0}
 --- !u!95 &821030696
 Animator:
   serializedVersion: 3
@@ -1360,7 +1357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: cafe
-  player: {fileID: 0}
+  player: {fileID: 742633310}
   slots: []
   avatarAwaiting: {fileID: 0}
   level1Scene: {fileID: 435542375}

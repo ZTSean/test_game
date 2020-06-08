@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DragDrop : MonoBehaviour
@@ -10,6 +11,7 @@ public class DragDrop : MonoBehaviour
 
     Vector2 initialPosition;
     private bool isDragging;
+    private Slot currentDropSlot;
 
     public const string ANIMATOR_IS_DRAGGING_PROPERTY_NAME = "isDragging";
     public const string ANIMATOR_IS_DROPPING_PROPERTY_NAME = "isDropping";
@@ -41,6 +43,7 @@ public class DragDrop : MonoBehaviour
                 if (polygonCollider2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
                 {
                     OnMouseUpActionTriggered(slot);
+                    currentDropSlot = slot;
                     isDroppedToSlot = true;
                     break;
                 }
@@ -76,7 +79,7 @@ public class DragDrop : MonoBehaviour
     {
         Debug.Log("Detected slot");
         ChangePosition(slot.transform.position);
-        ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME, true);
+        ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME + slot.level, true);
         ChangeAnimation(ANIMATOR_IS_DRAGGING_PROPERTY_NAME, false);
     }
 
@@ -84,7 +87,11 @@ public class DragDrop : MonoBehaviour
     {
         Debug.Log("No slot delected. Reset to initial position");
         ChangeAnimation(ANIMATOR_IS_DRAGGING_PROPERTY_NAME, false);
-        ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME, false);
+        if (currentDropSlot != null)
+        {
+            ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME + currentDropSlot.level, false);
+            currentDropSlot = null;
+        }
         ChangePosition(initialPosition);
     }
 }
