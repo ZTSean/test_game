@@ -586,7 +586,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: -1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 534
     mosaicPosition: {x: 0, y: 0}
   - name: Vector layer
@@ -607,14 +607,14 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 2
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 573
     mosaicPosition: {x: 0, y: 0}
   - name: Layer group
     spriteName: 
     isGroup: 1
     parentIndex: 5
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 579
     mosaicPosition: {x: 0, y: 0}
   - name: Vector layer
@@ -635,7 +635,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 5
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 575
     mosaicPosition: {x: 0, y: 0}
   - name: Vector layer
@@ -656,14 +656,14 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 2
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 541
     mosaicPosition: {x: 0, y: 0}
   - name: Layer group
     spriteName: 
     isGroup: 1
     parentIndex: 12
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 569
     mosaicPosition: {x: 0, y: 0}
   - name: Vector layer
@@ -684,7 +684,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 12
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 557
     mosaicPosition: {x: 0, y: 0}
   - name: Vector layer
@@ -705,7 +705,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 12
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 553
     mosaicPosition: {x: 0, y: 0}
   - name: Vector layer
@@ -726,14 +726,14 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 12
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 543
     mosaicPosition: {x: 0, y: 0}
   - name: Layer group
     spriteName: 
     isGroup: 1
     parentIndex: 22
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 549
     mosaicPosition: {x: 0, y: 0}
   - name: Vector layer
@@ -754,7 +754,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 22
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 544
     mosaicPosition: {x: 0, y: 0}
   - name: Vector layer
@@ -782,7 +782,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 2
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 536
     mosaicPosition: {x: 0, y: 0}
   - name: Vector layer

@@ -64,7 +64,6 @@ public class EnvManage : MonoBehaviour
             default:
                 Debug.LogError("No correct scene found");
                 break;
-
         }
         LoadEnvironmentObjects(currentSceneLevel);
     }
