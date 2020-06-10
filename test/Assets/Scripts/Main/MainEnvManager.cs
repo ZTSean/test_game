@@ -30,11 +30,11 @@ public class MainEnvManager : MonoBehaviour
         {
             case 0:
                 cafeLevel1.SetActive(true);
-                cafeLevel1.SetActive(false);
+                cafeLevel2.SetActive(false);
                 break;
             case 1:
                 cafeLevel2.SetActive(true);
-                cafeLevel2.SetActive(false);
+                cafeLevel1.SetActive(false);
                 break;
         }
 
