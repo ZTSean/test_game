@@ -13,4 +13,7 @@ public static class Constant {
     public const int SCENE_INDEX_DORM = 2;
     public const int SCENE_INDEX_MAIN = 3;
     public static readonly int[] SCENE_INDEXES = { SCENE_INDEX_CAFE, SCENE_INDEX_FACTORY, SCENE_INDEX_DORM, SCENE_INDEX_MAIN };
+
+
+    public const int UPGRADATION_DURATION_IN_MINS = 1;
 }
