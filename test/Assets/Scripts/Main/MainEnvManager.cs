@@ -137,7 +137,6 @@ public class MainEnvManager : MonoBehaviour
 
     private void EndUpgradation(int upgradationIndex)
     {
-        Debug.Log("Check end upgradation");
         int levelUpgradeTo = upgradationIndex % 10;
         int sceneIndex = (upgradationIndex / 10) % 10;
 
