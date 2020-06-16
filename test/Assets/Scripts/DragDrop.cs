@@ -78,7 +78,7 @@ public class DragDrop : MonoBehaviour
     protected virtual void OnMouseUpActionTriggered(Slot slot)
     {
         Debug.Log("Detected slot");
-        ChangePosition(slot.transform.position);
+        ChangePosition(slot.transformToBeSet.position);
         ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME + slot.level, true);
         ChangeAnimation(ANIMATOR_IS_DRAGGING_PROPERTY_NAME, false);
     }

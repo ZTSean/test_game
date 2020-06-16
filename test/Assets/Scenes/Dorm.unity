@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
+  transformToBeSet: {fileID: 0}
 --- !u!212 &118830799
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -245,7 +246,7 @@ Transform:
   m_GameObject: {fileID: 234105531}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.994327, y: -2.5193963, z: 6.75}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 490552980}
   m_RootOrder: 2
@@ -639,7 +640,7 @@ Transform:
   m_GameObject: {fileID: 710165436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.8156729, y: -2.5193963, z: 6.75}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 490552980}
   m_RootOrder: 0
@@ -844,7 +845,7 @@ Transform:
   m_GameObject: {fileID: 821030693}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.58432716, y: -2.5193963, z: 6.75}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 490552980}
   m_RootOrder: 1
@@ -1455,6 +1456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  transformToBeSet: {fileID: 0}
 --- !u!1 &1529175818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,6 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
+  transformToBeSet: {fileID: 0}
 --- !u!212 &1529175821
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1926,6 +1929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
+  transformToBeSet: {fileID: 0}
 --- !u!212 &1969466119
 SpriteRenderer:
   m_ObjectHideFlags: 0
