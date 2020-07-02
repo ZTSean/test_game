@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
@@ -11,9 +12,15 @@ public class PlayerData
     public int cafeLevel;
     public int factoryLevel;
     public int dormLevel;
+    public int adventureIndex;
     public int level;
     public int numberOfAvatars;
-
+    public AvatarData avatarData1;
+    public AvatarData avatarData2;
+    public AvatarData avatarData3;
+    public Constant.DayState dayState;
+    public DateTime lastUpdateTime;
+    public Dictionary<Constant.Item, int> items;
     public PlayerData()
     {
         materialAmount = 0;
@@ -23,5 +30,61 @@ public class PlayerData
         factoryLevel = 0;
         level = 0;
         numberOfAvatars = 3;
+        dayState = Constant.DayState.MORNING;
+        avatarData1 = new AvatarData();
+        avatarData2 = new AvatarData();
+        avatarData3 = new AvatarData();
+        items = new Dictionary<Constant.Item, int>();
+    }
+
+    public void UpdateAvatarState(int avatarIndex, Constant.AvatarState state)
+    {
+        Reward reward = new Reward();
+        switch (avatarIndex)
+        {
+            case 1:
+                reward = avatarData1.SetState(state, cafeLevel, dormLevel, factoryLevel, adventureIndex);
+                break;
+            case 2:
+                reward = avatarData2.SetState(state, cafeLevel, dormLevel, factoryLevel, adventureIndex);
+                break;
+            case 3:
+                reward = avatarData3.SetState(state, cafeLevel, dormLevel, factoryLevel, adventureIndex);
+                break;
+        }
+
+        if (reward.energy > 0)
+        {
+            // Update material cost if from factory working to idling
+            if (factoryLevel == 1)
+            {
+                materialAmount += Constant.FACTORY_MATERIAL_COST_LEVEL_1;
+            }
+            else if (factoryLevel == 2)
+            {
+                materialAmount += Constant.FACTORY_MATERIAL_COST_LEVEL_2;
+            }
+
+            // Update enercy collected if from factory working to idling
+            energyAmount += reward.energy;
+        }
+
+
+
+
+        // Update collected item from adventure
+        foreach (var item in reward.items)
+        {
+            int alreayHaveCount = 0;
+            bool hasValue = this.items.TryGetValue(item.Key, out alreayHaveCount);
+            if (hasValue)
+            {
+                this.items[item.Key] = alreayHaveCount + item.Value;
+            }
+            else
+            {
+                this.items[item.Key] = item.Value;
+            }
+        }
     }
 }

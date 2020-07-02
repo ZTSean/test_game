@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class DragDrop : MonoBehaviour
+public class Avatar : MonoBehaviour
 {
     public int avatarIndex;
     public Animator animator;
     public EnvManage envManage;
+    public Constant.AvatarState state;
 
     Vector2 initialPosition;
     private bool isDragging;
@@ -75,12 +76,32 @@ public class DragDrop : MonoBehaviour
         transform.Translate(diff);
     }
 
+    protected void CompleteCurrentState()
+    {
+        switch (state)
+        {
+            case Constant.AvatarState.EATING:
+                break;
+            case Constant.AvatarState.SLEEPING:
+                break;
+            case Constant.AvatarState.WORKING:
+                break;
+            case Constant.AvatarState.ADVENTURE:
+                break;
+        }
+        state = Constant.AvatarState.IDLING;
+
+        // Update playerData to save to file
+        envManage.player.playerData.UpdateAvatarState(avatarIndex, state);
+    }
+
     protected virtual void OnMouseUpActionTriggered(Slot slot)
     {
         Debug.Log("Detected slot");
         ChangePosition(slot.transformToBeSet.position);
         ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME + slot.level, true);
         ChangeAnimation(ANIMATOR_IS_DRAGGING_PROPERTY_NAME, false);
+        UpdateState(Constant.AvatarState.IDLING);
     }
 
     protected virtual void OnMouseUpNoActionTriggered()
@@ -93,5 +114,15 @@ public class DragDrop : MonoBehaviour
             currentDropSlot = null;
         }
         ChangePosition(initialPosition);
+        UpdateStateIfMouseUpTriggered();
+    }
+
+    protected void UpdateState(Constant.AvatarState state)
+    {
+        envManage.player.playerData.UpdateAvatarState(avatarIndex, state);
+    }
+
+    protected virtual void UpdateStateIfMouseUpTriggered()
+    {
     }
 }

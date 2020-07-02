@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using JetBrains.Annotations;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnvManage : MonoBehaviour
@@ -6,7 +7,9 @@ public class EnvManage : MonoBehaviour
     public string sceneName;
     public Player player;
     public List<Slot> slots;
-    public GameObject avatarAwaiting;
+    public Avatar avatar1;
+    public Avatar avatar2;
+    public Avatar avatar3;
     public GameObject level1Scene;
     public GameObject level2Scene;
     public GameObject level3Scene;
@@ -90,6 +93,27 @@ public class EnvManage : MonoBehaviour
             {
                 slots.Add(slot);
             }
+        }
+    }
+
+    public void MoveToNextDayState()
+    {
+        if (player.playerData.dayState == Constant.DayState.MORNING)
+        {
+            player.playerData.dayState = Constant.DayState.AFTERNOON;
+        }
+        else if (player.playerData.dayState == Constant.DayState.AFTERNOON)
+        {
+            player.playerData.dayState = Constant.DayState.NIGHT;
+        }
+        else if (player.playerData.dayState == Constant.DayState.NIGHT)
+        {
+            player.playerData.dayState = Constant.DayState.MORNING;
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            player.playerData.UpdateAvatarState(i, Constant.AvatarState.IDLING);
         }
     }
 }
