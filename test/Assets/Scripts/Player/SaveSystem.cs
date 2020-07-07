@@ -26,7 +26,7 @@ public static class SaveSystem
 
             PlayerData data = formatter.Deserialize(stream) as PlayerData;
             stream.Close();
-
+            Debug.Log("Load from save:" + data.dayState);
             return data;
         }
         else

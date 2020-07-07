@@ -20,6 +20,7 @@ public class PlayerData
     public AvatarData avatarData3;
     public Constant.DayState dayState;
     public DateTime lastUpdateTime;
+    public int dayStateLoopCount;
     public Dictionary<Constant.Item, int> items;
     public PlayerData()
     {
@@ -37,19 +38,19 @@ public class PlayerData
         items = new Dictionary<Constant.Item, int>();
     }
 
-    public void UpdateAvatarState(int avatarIndex, Constant.AvatarState state)
+    public void UpdateAvatarState(int avatarIndex, Constant.AvatarState state, bool isEndDayStateLoop)
     {
         Reward reward = new Reward();
         switch (avatarIndex)
         {
+            case 0:
+                reward = avatarData1.SetState(state, cafeLevel, dormLevel, factoryLevel, adventureIndex, isEndDayStateLoop);
+                break;
             case 1:
-                reward = avatarData1.SetState(state, cafeLevel, dormLevel, factoryLevel, adventureIndex);
+                reward = avatarData2.SetState(state, cafeLevel, dormLevel, factoryLevel, adventureIndex, isEndDayStateLoop);
                 break;
             case 2:
-                reward = avatarData2.SetState(state, cafeLevel, dormLevel, factoryLevel, adventureIndex);
-                break;
-            case 3:
-                reward = avatarData3.SetState(state, cafeLevel, dormLevel, factoryLevel, adventureIndex);
+                reward = avatarData3.SetState(state, cafeLevel, dormLevel, factoryLevel, adventureIndex, isEndDayStateLoop);
                 break;
         }
 
@@ -67,10 +68,8 @@ public class PlayerData
 
             // Update enercy collected if from factory working to idling
             energyAmount += reward.energy;
+            Debug.Log("Reward: energy get " + reward.energy);
         }
-
-
-
 
         // Update collected item from adventure
         foreach (var item in reward.items)

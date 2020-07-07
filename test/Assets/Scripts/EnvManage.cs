@@ -95,25 +95,4 @@ public class EnvManage : MonoBehaviour
             }
         }
     }
-
-    public void MoveToNextDayState()
-    {
-        if (player.playerData.dayState == Constant.DayState.MORNING)
-        {
-            player.playerData.dayState = Constant.DayState.AFTERNOON;
-        }
-        else if (player.playerData.dayState == Constant.DayState.AFTERNOON)
-        {
-            player.playerData.dayState = Constant.DayState.NIGHT;
-        }
-        else if (player.playerData.dayState == Constant.DayState.NIGHT)
-        {
-            player.playerData.dayState = Constant.DayState.MORNING;
-        }
-
-        for (int i = 0; i < 3; i++)
-        {
-            player.playerData.UpdateAvatarState(i, Constant.AvatarState.IDLING);
-        }
-    }
 }

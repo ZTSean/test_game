@@ -16,6 +16,12 @@ public class MainEnvManager : MonoBehaviour
     public GameObject spaceshipLevel2;
     public GameObject inConstructionPrefeb;
 
+    // Backgound related resources
+    public Sprite backgroundMorning;
+    public Sprite backgroundAfternoon;
+    public Sprite backgroundNight;
+    public GameObject backgroundGameobject;
+    
     private Dictionary<int, UpgradationTimer> upgradationTimers;
     private Dictionary<int, GameObject> consturctions;
 
@@ -84,6 +90,20 @@ public class MainEnvManager : MonoBehaviour
             case 1:
                 spaceshipLevel2.SetActive(true);
                 spaceshipLevel1.SetActive(false);
+                break;
+        }
+
+        Debug.Log(player.playerData.dayState);
+        switch (player.playerData.dayState)
+        {
+            case Constant.DayState.MORNING:
+                backgroundGameobject.GetComponent<SpriteRenderer>().sprite = backgroundMorning;
+                break;
+            case Constant.DayState.AFTERNOON:
+                backgroundGameobject.GetComponent<SpriteRenderer>().sprite = backgroundAfternoon;
+                break;
+            case Constant.DayState.NIGHT:
+                backgroundGameobject.GetComponent<SpriteRenderer>().sprite = backgroundNight;
                 break;
         }
     }
@@ -156,6 +176,40 @@ public class MainEnvManager : MonoBehaviour
             case Constant.SCENE_INDEX_MAIN:
                 spaceshipLevel2.SetActive(true);
                 break;
+        }
+    }
+
+    public void MoveToNextDayState()
+    {
+        SpriteRenderer backgroundSpriteRender = backgroundGameobject.GetComponent<SpriteRenderer>();
+        if (player.playerData.dayState == Constant.DayState.MORNING)
+        {
+            player.playerData.dayState = Constant.DayState.AFTERNOON;
+            backgroundSpriteRender.sprite = backgroundAfternoon;
+        }
+        else if (player.playerData.dayState == Constant.DayState.AFTERNOON)
+        {
+            player.playerData.dayState = Constant.DayState.NIGHT;
+            backgroundSpriteRender.sprite = backgroundNight;
+        }
+        else if (player.playerData.dayState == Constant.DayState.NIGHT)
+        {
+            player.playerData.dayState = Constant.DayState.MORNING;
+            backgroundSpriteRender.sprite = backgroundMorning;
+        }
+
+        bool isEndDayStateLoop = false ;
+        player.playerData.dayStateLoopCount++;
+        if (player.playerData.dayStateLoopCount > 0 && player.playerData.dayStateLoopCount % Constant.DAY_STATE_LOOP_THRESHOLD == 0)
+        {
+            player.playerData.dayStateLoopCount %= Constant.DAY_STATE_LOOP_THRESHOLD;
+            
+            isEndDayStateLoop = true;
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            player.playerData.UpdateAvatarState(i, Constant.AvatarState.IDLING, isEndDayStateLoop);
         }
     }
 }

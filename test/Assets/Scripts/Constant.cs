@@ -48,8 +48,12 @@ public static class Constant {
     public const int AVATAR_MAX_SANITY_LEVEL_1 = 5;
     public const int AVATAR_MAX_HUNGRY_LEVEL_2 = 10;
     public const int AVATAR_MAX_SANITY_LEVEL_2 = 10;
+    public const int AVATAR_LEVEL_1_TO_2_EXPERIENCE = 50;
 
-    // State constants
+    // Day State constants
+    public const int DAY_STATE_LOOP_THRESHOLD = 3;
+    public const int DAY_STATE_LOOP_HUNGRY_COST = -1;
+    public const int DAY_STATE_LOOP_SANITY_COST = -1;
     public enum AvatarState
     {
          SLEEPING,

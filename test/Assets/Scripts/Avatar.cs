@@ -91,8 +91,17 @@ public class Avatar : MonoBehaviour
         }
         state = Constant.AvatarState.IDLING;
 
+        bool isEndDayStateLoop = false;
+        envManage.player.playerData.dayStateLoopCount++;
+        if (envManage.player.playerData.dayStateLoopCount > 0 && envManage.player.playerData.dayStateLoopCount % Constant.DAY_STATE_LOOP_THRESHOLD == 0)
+        {
+            envManage.player.playerData.dayStateLoopCount %= Constant.DAY_STATE_LOOP_THRESHOLD;
+
+            isEndDayStateLoop = true;
+        }
+
         // Update playerData to save to file
-        envManage.player.playerData.UpdateAvatarState(avatarIndex, state);
+        envManage.player.playerData.UpdateAvatarState(avatarIndex, state, isEndDayStateLoop);
     }
 
     protected virtual void OnMouseUpActionTriggered(Slot slot)
@@ -119,7 +128,8 @@ public class Avatar : MonoBehaviour
 
     protected void UpdateState(Constant.AvatarState state)
     {
-        envManage.player.playerData.UpdateAvatarState(avatarIndex, state);
+        // This update state will only be triggered when mouse is up/down, does not mean it finish current task
+        envManage.player.playerData.UpdateAvatarState(avatarIndex, state, false);
     }
 
     protected virtual void UpdateStateIfMouseUpTriggered()
