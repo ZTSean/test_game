@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class AvatarSleeping : Avatar
 {
-    protected override void OnMouseUpActionTriggered(Slot slot)
+    protected override bool OnMouseUpActionTriggered(Slot slot)
     {
         base.OnMouseUpActionTriggered(slot);
         slot.gameObject.SetActive(false);
+        return true;
     }
 
     protected override void UpdateStateIfMouseUpTriggered()

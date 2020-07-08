@@ -12,6 +12,8 @@ public class AvatarData
     public int level;
     public int experience;
     public Constant.AvatarState state;
+    public int deadDaysCount;
+    private bool isDead;
 
     public AvatarData()
     {
@@ -112,6 +114,23 @@ public class AvatarData
 
     private void UpdateStatusDayStateComplete()
     {
+        if (this.hungry <= 0 || this.sanity <= 0)
+        {
+            if (deadDaysCount >= 3)
+            {
+                Debug.Log("3 days hungry/sanity below 0, dead");
+                isDead = true;
+            }
+            else
+            {
+                deadDaysCount++;
+            }
+        }
+        else
+        {
+            deadDaysCount = 0;
+            isDead = false;
+        }
         this.hungry += Constant.DAY_STATE_LOOP_HUNGRY_COST;
         this.sanity += Constant.DAY_STATE_LOOP_SANITY_COST;
         Debug.Log("Day State Loop Complete: sanity get " + Constant.DAY_STATE_LOOP_SANITY_COST + " hungry get " + Constant.DAY_STATE_LOOP_HUNGRY_COST);

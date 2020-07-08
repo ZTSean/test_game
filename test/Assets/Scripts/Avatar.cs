@@ -43,9 +43,16 @@ public class Avatar : MonoBehaviour
                 PolygonCollider2D polygonCollider2D = slot.gameObject.GetComponent<PolygonCollider2D>();
                 if (polygonCollider2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
                 {
-                    OnMouseUpActionTriggered(slot);
-                    currentDropSlot = slot;
-                    isDroppedToSlot = true;
+                    if (OnMouseUpActionTriggered(slot))
+                    {
+                        currentDropSlot = slot;
+                        isDroppedToSlot = true;
+                    }
+                    else
+                    {
+                        // Not able to drop to slot since the sanity/hungry/material is NOT enough
+                        // popup window to show it
+                    }
                     break;
                 }
             }
@@ -104,13 +111,14 @@ public class Avatar : MonoBehaviour
         envManage.player.playerData.UpdateAvatarState(avatarIndex, state, isEndDayStateLoop);
     }
 
-    protected virtual void OnMouseUpActionTriggered(Slot slot)
+    protected virtual bool OnMouseUpActionTriggered(Slot slot)
     {
         Debug.Log("Detected slot");
         ChangePosition(slot.transformToBeSet.position);
         ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME + slot.level, true);
         ChangeAnimation(ANIMATOR_IS_DRAGGING_PROPERTY_NAME, false);
-        UpdateState(Constant.AvatarState.IDLING);
+        UpdateStateIfMouseUpTriggered();
+        return true;
     }
 
     protected virtual void OnMouseUpNoActionTriggered()
@@ -123,7 +131,7 @@ public class Avatar : MonoBehaviour
             currentDropSlot = null;
         }
         ChangePosition(initialPosition);
-        UpdateStateIfMouseUpTriggered();
+        UpdateState(Constant.AvatarState.IDLING);
     }
 
     protected void UpdateState(Constant.AvatarState state)
