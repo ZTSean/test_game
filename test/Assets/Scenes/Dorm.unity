@@ -266,6 +266,7 @@ MonoBehaviour:
   avatarIndex: 2
   animator: {fileID: 234105534}
   envManage: {fileID: 1577416607}
+  state: 0
 --- !u!95 &234105534
 Animator:
   serializedVersion: 3
@@ -660,6 +661,7 @@ MonoBehaviour:
   avatarIndex: 0
   animator: {fileID: 710165439}
   envManage: {fileID: 1577416607}
+  state: 0
 --- !u!95 &710165439
 Animator:
   serializedVersion: 3
@@ -800,8 +802,35 @@ MonoBehaviour:
     cafeLevel: 0
     factoryLevel: 0
     dormLevel: 0
+    adventureIndex: 0
     level: 0
     numberOfAvatars: 3
+    avatarData1:
+      sanity: 5
+      hungry: 5
+      level: 0
+      experience: 0
+      state: 2
+      deadDaysCount: 0
+      isDead: 0
+    avatarData2:
+      sanity: 5
+      hungry: 5
+      level: 0
+      experience: 0
+      state: 2
+      deadDaysCount: 0
+      isDead: 0
+    avatarData3:
+      sanity: 5
+      hungry: 5
+      level: 0
+      experience: 0
+      state: 2
+      deadDaysCount: 0
+      isDead: 0
+    dayState: 0
+    dayStateLoopCount: 0
 --- !u!4 &742633311
 Transform:
   m_ObjectHideFlags: 0
@@ -865,6 +894,7 @@ MonoBehaviour:
   avatarIndex: 1
   animator: {fileID: 821030696}
   envManage: {fileID: 1577416607}
+  state: 0
 --- !u!95 &821030696
 Animator:
   serializedVersion: 3
@@ -1007,8 +1037,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -202, y: 200}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -266, y: 235}
+  m_SizeDelta: {x: 101, y: 35.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1020833097
 MonoBehaviour:
@@ -1094,8 +1124,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: ce49cdbfafc2e084083e0ce520a99776, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1251,11 +1281,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: cc5d8564960046e439c3d4acc9cd5cad, type: 3}
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1263,7 +1293,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Leave Dorm
+  m_Text: Leave
 --- !u!222 &1224782575
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1585,7 +1615,9 @@ MonoBehaviour:
   sceneName: cafe
   player: {fileID: 742633310}
   slots: []
-  avatarAwaiting: {fileID: 0}
+  avatar1: {fileID: 0}
+  avatar2: {fileID: 0}
+  avatar3: {fileID: 0}
   level1Scene: {fileID: 435542375}
   level2Scene: {fileID: 1628368375}
   level3Scene: {fileID: 356645134}

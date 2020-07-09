@@ -13,7 +13,7 @@ public class AvatarData
     public int experience;
     public Constant.AvatarState state;
     public int deadDaysCount;
-    private bool isDead;
+    public bool isDead;
 
     public AvatarData()
     {
@@ -44,10 +44,33 @@ public class AvatarData
                     break;
             }
         }
-        if (isEndDayStateLoop)
+
+        // Update avatar dead days if it has < 0 sanity/hungry
+        if (this.hungry <= 0 || this.sanity <= 0)
+        {
+            if (deadDaysCount >= 3)
+            {
+                Debug.Log("3 days hungry/sanity below 0, dead");
+                isDead = true;
+            }
+            else
+            {
+                Debug.Log("Dead days ++");
+                deadDaysCount++;
+            }
+        }
+        else
+        {
+            deadDaysCount = 0;
+            isDead = false;
+        }
+
+        // Update if 3 day state change reached
+        if (isEndDayStateLoop && !isDead)
         {
             UpdateStatusDayStateComplete();
         }
+
         this.state = state;
         return reward;
     }
@@ -114,23 +137,6 @@ public class AvatarData
 
     private void UpdateStatusDayStateComplete()
     {
-        if (this.hungry <= 0 || this.sanity <= 0)
-        {
-            if (deadDaysCount >= 3)
-            {
-                Debug.Log("3 days hungry/sanity below 0, dead");
-                isDead = true;
-            }
-            else
-            {
-                deadDaysCount++;
-            }
-        }
-        else
-        {
-            deadDaysCount = 0;
-            isDead = false;
-        }
         this.hungry += Constant.DAY_STATE_LOOP_HUNGRY_COST;
         this.sanity += Constant.DAY_STATE_LOOP_SANITY_COST;
         Debug.Log("Day State Loop Complete: sanity get " + Constant.DAY_STATE_LOOP_SANITY_COST + " hungry get " + Constant.DAY_STATE_LOOP_HUNGRY_COST);
