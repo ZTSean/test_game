@@ -166,7 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  transformToBeSet: {fileID: 0}
+  slotIndex: 2
+  transformToBeSet: {fileID: 118830797}
 --- !u!212 &118830799
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -812,6 +813,7 @@ MonoBehaviour:
       experience: 0
       state: 2
       deadDaysCount: 0
+      slotIndex: -1
       isDead: 0
     avatarData2:
       sanity: 5
@@ -820,6 +822,7 @@ MonoBehaviour:
       experience: 0
       state: 2
       deadDaysCount: 0
+      slotIndex: -1
       isDead: 0
     avatarData3:
       sanity: 5
@@ -828,6 +831,7 @@ MonoBehaviour:
       experience: 0
       state: 2
       deadDaysCount: 0
+      slotIndex: -1
       isDead: 0
     dayState: 0
     dayStateLoopCount: 0
@@ -1486,7 +1490,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  transformToBeSet: {fileID: 0}
+  slotIndex: 0
+  transformToBeSet: {fileID: 1328939004}
 --- !u!1 &1529175818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,7 +1537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  transformToBeSet: {fileID: 0}
+  slotIndex: 0
+  transformToBeSet: {fileID: 1529175819}
 --- !u!212 &1529175821
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1615,9 +1621,9 @@ MonoBehaviour:
   sceneName: cafe
   player: {fileID: 742633310}
   slots: []
-  avatar1: {fileID: 0}
-  avatar2: {fileID: 0}
-  avatar3: {fileID: 0}
+  avatar1: {fileID: 710165438}
+  avatar2: {fileID: 821030695}
+  avatar3: {fileID: 234105533}
   level1Scene: {fileID: 435542375}
   level2Scene: {fileID: 1628368375}
   level3Scene: {fileID: 356645134}
@@ -1961,7 +1967,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  transformToBeSet: {fileID: 0}
+  slotIndex: 1
+  transformToBeSet: {fileID: 1969466117}
 --- !u!212 &1969466119
 SpriteRenderer:
   m_ObjectHideFlags: 0

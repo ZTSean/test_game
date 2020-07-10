@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
+        this.playerData.lastUpdateTime = System.DateTime.UtcNow;
         SaveSystem.SavePlayer(this.playerData);
     }
 }

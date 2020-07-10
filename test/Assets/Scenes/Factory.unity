@@ -167,10 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e229896524552984f886fefa3a55f6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avatarIndex: 0
+  avatarIndex: 2
   animator: {fileID: 45266594}
   envManage: {fileID: 1189069727}
-  state: 0
+  state: 2
 --- !u!95 &45266594
 Animator:
   serializedVersion: 3
@@ -526,7 +526,7 @@ MonoBehaviour:
   avatarIndex: 0
   animator: {fileID: 317872855}
   envManage: {fileID: 1189069727}
-  state: 0
+  state: 2
 --- !u!1 &322520695
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  slotIndex: 2
   transformToBeSet: {fileID: 322520696}
 --- !u!212 &322520698
 SpriteRenderer:
@@ -800,6 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
+  slotIndex: 0
   transformToBeSet: {fileID: 51392352}
 --- !u!60 &531202359
 PolygonCollider2D:
@@ -1168,6 +1170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  slotIndex: 1
   transformToBeSet: {fileID: 1121555507}
 --- !u!212 &1121555509
 SpriteRenderer:
@@ -1460,6 +1463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
+  slotIndex: 1
   transformToBeSet: {fileID: 940534399}
 --- !u!60 &1187939963
 PolygonCollider2D:
@@ -1577,9 +1581,9 @@ MonoBehaviour:
   sceneName: factory
   player: {fileID: 1282505174}
   slots: []
-  avatar1: {fileID: 0}
-  avatar2: {fileID: 0}
-  avatar3: {fileID: 0}
+  avatar1: {fileID: 317872858}
+  avatar2: {fileID: 1226165923}
+  avatar3: {fileID: 45266593}
   level1Scene: {fileID: 1373411802}
   level2Scene: {fileID: 1255744361}
   level3Scene: {fileID: 1263200199}
@@ -1826,10 +1830,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e229896524552984f886fefa3a55f6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avatarIndex: 0
+  avatarIndex: 1
   animator: {fileID: 1226165924}
   envManage: {fileID: 1189069727}
-  state: 0
+  state: 2
 --- !u!95 &1226165924
 Animator:
   serializedVersion: 3
@@ -2043,6 +2047,7 @@ MonoBehaviour:
       experience: 0
       state: 2
       deadDaysCount: 0
+      slotIndex: -1
       isDead: 0
     avatarData2:
       sanity: 5
@@ -2051,6 +2056,7 @@ MonoBehaviour:
       experience: 0
       state: 2
       deadDaysCount: 0
+      slotIndex: -1
       isDead: 0
     avatarData3:
       sanity: 5
@@ -2059,6 +2065,7 @@ MonoBehaviour:
       experience: 0
       state: 2
       deadDaysCount: 0
+      slotIndex: -1
       isDead: 0
     dayState: 0
     dayStateLoopCount: 0
@@ -2188,6 +2195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
+  slotIndex: 2
   transformToBeSet: {fileID: 354522995}
 --- !u!60 &1468803293
 PolygonCollider2D:
@@ -2405,6 +2413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  slotIndex: 0
   transformToBeSet: {fileID: 1606879838}
 --- !u!212 &1606879840
 SpriteRenderer:

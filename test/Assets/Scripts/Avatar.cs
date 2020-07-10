@@ -20,6 +20,14 @@ public class Avatar : MonoBehaviour
     void Start()
     {
         initialPosition = this.gameObject.transform.position;
+        Debug.Log("set initial position: " + initialPosition);
+
+        // Only show sprite when avatar is idling
+        if (state != Constant.AvatarState.IDLING)
+        {
+            Debug.Log("Avatar " + avatarIndex + " not idling, hide");
+            this.gameObject.SetActive(false);
+        }
     }
 
     protected void OnMouseDown()
@@ -43,9 +51,22 @@ public class Avatar : MonoBehaviour
                 PolygonCollider2D polygonCollider2D = slot.gameObject.GetComponent<PolygonCollider2D>();
                 if (polygonCollider2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
                 {
-                    if (OnMouseUpActionTriggered(slot))
+                    if (OnMouseUpActionTriggeredValidation(slot))
                     {
                         currentDropSlot = slot;
+                        switch(avatarIndex)
+                        {
+                            case 0:
+                                envManage.player.playerData.avatarData1.slotIndex = currentDropSlot.slotIndex;
+                                break;
+                            case 1:
+                                envManage.player.playerData.avatarData2.slotIndex = currentDropSlot.slotIndex;
+                                break;
+                            case 2:
+                                envManage.player.playerData.avatarData3.slotIndex = currentDropSlot.slotIndex;
+                                break;
+                        }
+                        OnMouseUpActionTriggered();
                         isDroppedToSlot = true;
                     }
                     else
@@ -61,6 +82,20 @@ public class Avatar : MonoBehaviour
                 OnMouseUpNoActionTriggered();
             }
             isDragging = false;
+        }
+    }
+
+    public void LoadData(AvatarData avatarData, Slot slot)
+    {
+        this.state = avatarData.state;
+        this.currentDropSlot = slot;
+        if (slot != null)
+        {
+            OnMouseUpActionTriggered();
+        }
+        else
+        {
+            OnMouseUpNoActionTriggered();
         }
     }
 
@@ -111,14 +146,18 @@ public class Avatar : MonoBehaviour
         envManage.player.playerData.UpdateAvatarState(avatarIndex, state, isEndDayStateLoop);
     }
 
-    protected virtual bool OnMouseUpActionTriggered(Slot slot)
+    protected virtual bool OnMouseUpActionTriggeredValidation(Slot slot)
     {
         Debug.Log("Detected slot");
-        ChangePosition(slot.transformToBeSet.position);
-        ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME + slot.level, true);
+        return true;
+    }
+
+    protected virtual void OnMouseUpActionTriggered()
+    {
+        ChangePosition(currentDropSlot.transformToBeSet.position);
+        ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME + currentDropSlot.level, true);
         ChangeAnimation(ANIMATOR_IS_DRAGGING_PROPERTY_NAME, false);
         UpdateStateIfMouseUpTriggered();
-        return true;
     }
 
     protected virtual void OnMouseUpNoActionTriggered()

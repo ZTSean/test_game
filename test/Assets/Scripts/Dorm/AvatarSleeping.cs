@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class AvatarSleeping : Avatar
 {
-    protected override bool OnMouseUpActionTriggered(Slot slot)
+    protected override bool OnMouseUpActionTriggeredValidation(Slot slot)
     {
-        base.OnMouseUpActionTriggered(slot);
+        base.OnMouseUpActionTriggeredValidation(slot);
         slot.gameObject.SetActive(false);
         return true;
     }

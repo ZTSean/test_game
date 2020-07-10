@@ -69,6 +69,7 @@ public class EnvManage : MonoBehaviour
                 break;
         }
         LoadEnvironmentObjects(currentSceneLevel);
+        LoadAvatarDataFromPlayerData();
     }
 
     private void LoadEnvironmentObjects(int level)
@@ -82,6 +83,28 @@ public class EnvManage : MonoBehaviour
         }
 
         LoadSlotsIfPossible(level);
+    }
+
+    private void LoadAvatarDataFromPlayerData()
+    {
+        avatar1.LoadData(player.playerData.avatarData1, LocateSlotByIndex(player.playerData.avatarData1.slotIndex));
+        avatar2.LoadData(player.playerData.avatarData2, LocateSlotByIndex(player.playerData.avatarData2.slotIndex));
+        avatar3.LoadData(player.playerData.avatarData3, LocateSlotByIndex(player.playerData.avatarData3.slotIndex));
+    }
+
+    private Slot LocateSlotByIndex(int slotIndex)
+    {
+        Slot result = null;
+        foreach (Slot slot in slots)
+        {
+            if (slot.slotIndex == slotIndex)
+            {
+                result = slot;
+                break;
+            }
+        }
+
+        return result;
     }
 
     private void LoadSlotsIfPossible(int level)

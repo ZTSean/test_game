@@ -13,6 +13,7 @@ public class AvatarData
     public int experience;
     public Constant.AvatarState state;
     public int deadDaysCount;
+    public int slotIndex;
     public bool isDead;
 
     public AvatarData()
@@ -20,6 +21,7 @@ public class AvatarData
         hungry = Constant.AVATAR_MAX_HUNGRY_LEVEL_1;
         sanity = Constant.AVATAR_MAX_SANITY_LEVEL_1;
         state = Constant.AvatarState.IDLING;
+        slotIndex = -1;
     }
 
     public Reward SetState(Constant.AvatarState state, int cafeLevel, int dormLevel, int factoryLevel, int adventureIndex, bool isEndDayStateLoop)
@@ -38,11 +40,16 @@ public class AvatarData
                     break;
                 case Constant.AvatarState.ADVENTURE:
                     reward = UpdateAdventureComplete(adventureIndex);
+                    
                     break;
                 case Constant.AvatarState.WORKING:
                     reward = UpdateStatusFactoryComplete(factoryLevel);
                     break;
+                default:
+                    // Do nothing
+                    break;
             }
+            slotIndex = -1;
         }
 
         // Update avatar dead days if it has < 0 sanity/hungry

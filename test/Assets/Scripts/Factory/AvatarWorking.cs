@@ -2,7 +2,7 @@
 
 public class AvatarWorking : Avatar
 {
-    protected override bool OnMouseUpActionTriggered(Slot slot)
+    protected override bool OnMouseUpActionTriggeredValidation(Slot slot)
     {
         AvatarData avatarData = null;
         switch(avatarIndex)
@@ -43,10 +43,6 @@ public class AvatarWorking : Avatar
             envManage.player.playerData.materialAmount > materialCost)
         {
             Debug.Log("Detected slot & enough sanity and hungry");
-            ChangePosition(slot.transformToBeSet.position);
-            ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME + slot.level, true);
-            ChangeAnimation(ANIMATOR_IS_DRAGGING_PROPERTY_NAME, false);
-            UpdateStateIfMouseUpTriggered();
             return true;
         }
         else

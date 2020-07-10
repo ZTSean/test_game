@@ -29,6 +29,12 @@ public class MainEnvManager : MonoBehaviour
     {
         upgradationTimers = new Dictionary<int, UpgradationTimer>();
         consturctions = new Dictionary<int, GameObject>();
+        if (player.playerData.lastUpdateTime != null && 
+            player.playerData.lastUpdateTime.AddMinutes(5) > System.DateTime.UtcNow)
+        {
+            // if off game more than 5 mins move to next day state
+            MoveToNextDayState();
+        }
         LoadEnvironmentAll();
     }
 
