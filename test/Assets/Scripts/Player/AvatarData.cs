@@ -87,12 +87,18 @@ public class AvatarData
         int delta = 0;
         if (cafeLevel == 0)
         {
-            delta = Constant.CAFE_HUNGRY_RECOVER_LEVEL_1;
+            delta = Constant.CAFE_HUNGRY_RECOVER_LEVEL_1 + this.hungry > Constant.AVATAR_MAX_HUNGRY_LEVEL_1 ?
+                Constant.AVATAR_MAX_HUNGRY_LEVEL_1 - this.hungry
+                :
+                Constant.DORM_SANITY_RECOVER_LEVEL_1;
         }
 
         if (cafeLevel == 1)
         {
-            delta = Constant.CAFE_HUNGRY_RECOVER_LEVEL_2;
+            delta = Constant.CAFE_HUNGRY_RECOVER_LEVEL_2 + this.hungry > Constant.AVATAR_MAX_HUNGRY_LEVEL_2 ?
+                Constant.AVATAR_MAX_HUNGRY_LEVEL_2 - this.hungry
+                :
+                Constant.DORM_SANITY_RECOVER_LEVEL_2;
         }
         this.hungry += delta;
         Debug.Log("Cafe Complete: hungry get " + delta);
@@ -103,12 +109,19 @@ public class AvatarData
         int delta = 0;
         if (dormLevel == 0)
         {
-            delta = Constant.DORM_SANITY_RECOVER_LEVEL_1;
+            delta = Constant.DORM_SANITY_RECOVER_LEVEL_1 + this.sanity > Constant.AVATAR_MAX_SANITY_LEVEL_1 ?
+                Constant.AVATAR_MAX_SANITY_LEVEL_1 - this.sanity
+                :
+                Constant.DORM_SANITY_RECOVER_LEVEL_1;
         }
 
         if (dormLevel == 1)
         {
-            delta = Constant.DORM_SANITY_RECOVER_LEVEL_2;
+            delta = Constant.DORM_SANITY_RECOVER_LEVEL_2 + this.sanity > Constant.AVATAR_MAX_SANITY_LEVEL_2 ?
+                Constant.AVATAR_MAX_SANITY_LEVEL_2 - this.sanity
+                :
+                Constant.DORM_SANITY_RECOVER_LEVEL_2
+                ;
         }
         this.sanity += delta;
         Debug.Log("Dorm Complete: sanity get " + delta);

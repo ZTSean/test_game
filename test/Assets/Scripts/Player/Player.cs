@@ -10,11 +10,13 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Load player data");
         playerData = SaveSystem.LoadPlayer();
     }
 
     private void OnDestroy()
     {
+        Debug.Log("Save player data");
         this.playerData.lastUpdateTime = System.DateTime.UtcNow;
         SaveSystem.SavePlayer(this.playerData);
     }

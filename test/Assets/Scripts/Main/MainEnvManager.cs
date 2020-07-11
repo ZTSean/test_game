@@ -6,6 +6,9 @@ using UnityEngine.UIElements;
 public class MainEnvManager : MonoBehaviour
 {
     public Player player;
+    public avatarMainScene avatar1;
+    public avatarMainScene avatar2;
+    public avatarMainScene avatar3;
     public GameObject cafeLevel1;
     public GameObject cafeLevel2;
     public GameObject factoryLevel1;
@@ -30,7 +33,7 @@ public class MainEnvManager : MonoBehaviour
         upgradationTimers = new Dictionary<int, UpgradationTimer>();
         consturctions = new Dictionary<int, GameObject>();
         if (player.playerData.lastUpdateTime != null && 
-            player.playerData.lastUpdateTime.AddMinutes(5) > System.DateTime.UtcNow)
+            player.playerData.lastUpdateTime.AddMinutes(5) < System.DateTime.UtcNow)
         {
             // if off game more than 5 mins move to next day state
             MoveToNextDayState();
@@ -46,6 +49,22 @@ public class MainEnvManager : MonoBehaviour
             {
                 EndUpgradation(index);
             }
+        }
+    }
+
+    public void LoadAvatarDataFromPlayerData(int avatarIndex)
+    {
+        switch (avatarIndex)
+        {
+            case 0:
+                avatar1.LoadData(player.playerData.avatarData1);
+                break;
+            case 1:
+                avatar2.LoadData(player.playerData.avatarData2);
+                break;
+            case 2:
+                avatar3.LoadData(player.playerData.avatarData3);
+                break;
         }
     }
 

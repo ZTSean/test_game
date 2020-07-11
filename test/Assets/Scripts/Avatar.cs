@@ -20,12 +20,12 @@ public class Avatar : MonoBehaviour
     void Start()
     {
         initialPosition = this.gameObject.transform.position;
-        Debug.Log("set initial position: " + initialPosition);
 
         // Only show sprite when avatar is idling
+        envManage.LoadAvatarDataFromPlayerData(avatarIndex);
         if (state != Constant.AvatarState.IDLING)
         {
-            Debug.Log("Avatar " + avatarIndex + " not idling, hide");
+            Debug.Log("Avatar " + avatarIndex + " not idling, hide: " + state);
             this.gameObject.SetActive(false);
         }
     }
@@ -91,11 +91,19 @@ public class Avatar : MonoBehaviour
         this.currentDropSlot = slot;
         if (slot != null)
         {
-            OnMouseUpActionTriggered();
+            ChangePosition(currentDropSlot.transformToBeSet.position);
+            ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME + currentDropSlot.level, true);
+            ChangeAnimation(ANIMATOR_IS_DRAGGING_PROPERTY_NAME, false);
         }
         else
         {
-            OnMouseUpNoActionTriggered();
+            ChangeAnimation(ANIMATOR_IS_DRAGGING_PROPERTY_NAME, false);
+            if (currentDropSlot != null)
+            {
+                ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME + currentDropSlot.level, false);
+                currentDropSlot = null;
+            }
+            ChangePosition(initialPosition);
         }
     }
 
