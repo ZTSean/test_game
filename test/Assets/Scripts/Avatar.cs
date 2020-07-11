@@ -10,12 +10,12 @@ public class Avatar : MonoBehaviour
     public EnvManage envManage;
     public Constant.AvatarState state;
 
-    Vector2 initialPosition;
+    protected Vector2 initialPosition;
     private bool isDragging;
-    private Slot currentDropSlot;
+    protected Slot currentDropSlot;
 
-    public const string ANIMATOR_IS_DRAGGING_PROPERTY_NAME = "isDragging";
-    public const string ANIMATOR_IS_DROPPING_PROPERTY_NAME = "isDropping";
+    public virtual string ANIMATOR_IS_DRAGGING_PROPERTY_NAME { get { return "isDragging"; } }
+    public virtual string ANIMATOR_IS_DROPPING_PROPERTY_NAME { get { return "isDropping"; } }
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class Avatar : MonoBehaviour
 
         // Only show sprite when avatar is idling
         envManage.LoadAvatarDataFromPlayerData(avatarIndex);
-        if (state != Constant.AvatarState.IDLING)
+        if (state != Constant.AvatarState.IDLING && !isStateMatchScene())
         {
             Debug.Log("Avatar " + avatarIndex + " not idling, hide: " + state);
             this.gameObject.SetActive(false);
@@ -85,7 +85,7 @@ public class Avatar : MonoBehaviour
         }
     }
 
-    public void LoadData(AvatarData avatarData, Slot slot)
+    public virtual void LoadData(AvatarData avatarData, Slot slot)
     {
         this.state = avatarData.state;
         this.currentDropSlot = slot;
@@ -189,5 +189,20 @@ public class Avatar : MonoBehaviour
 
     protected virtual void UpdateStateIfMouseUpTriggered()
     {
+    }
+
+    private bool isStateMatchScene()
+    {
+        Debug.Log(state + " " + envManage.sceneName.ToLower());
+        switch (state)
+        {
+            case Constant.AvatarState.EATING:
+                return envManage.sceneName.ToLower().Equals("cafe");
+            case Constant.AvatarState.SLEEPING:
+                return envManage.sceneName.ToLower().Equals("dorm");
+            case Constant.AvatarState.WORKING:
+                return envManage.sceneName.ToLower().Equals("factory");
+        }
+        return false;
     }
 }
