@@ -14,7 +14,7 @@ public class AvatarSleeping : Avatar
     {
         this.state = avatarData.state;
         this.currentDropSlot = slot;
-        if (slot != null)
+        if (slot != null && this.state == Constant.AvatarState.SLEEPING)
         {
             ChangePosition(currentDropSlot.transformToBeSet.position);
             ChangeAnimation(ANIMATOR_IS_DROPPING_PROPERTY_NAME + currentDropSlot.level + currentDropSlot.slotIndex, true);

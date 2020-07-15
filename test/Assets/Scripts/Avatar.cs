@@ -32,10 +32,14 @@ public class Avatar : MonoBehaviour
 
     protected void OnMouseDown()
     {
-        Debug.Log("start dragging");
-        isDragging = true;
+        if (this.state == Constant.AvatarState.IDLING)
+        {
+            isDragging = true;
+        }
+
         if (isDragging)
         {
+            Debug.Log("start dragging");
             ChangeAnimation(ANIMATOR_IS_DRAGGING_PROPERTY_NAME, true);
         }
     }
@@ -184,6 +188,7 @@ public class Avatar : MonoBehaviour
     protected void UpdateState(Constant.AvatarState state)
     {
         // This update state will only be triggered when mouse is up/down, does not mean it finish current task
+        this.state = state;
         envManage.player.playerData.UpdateAvatarState(avatarIndex, state, false);
     }
 
