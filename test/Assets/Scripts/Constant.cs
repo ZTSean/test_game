@@ -44,6 +44,9 @@ public static class Constant {
     public const int ADV_SANITY_COST_LEVEL_2 = 6;
 
     // Avatar constants
+    public const string AVATAR1_NAME = "OSHS0401";
+    public const string AVATAR2_NAME = "OSHS0402";
+    public const string AVATAR3_NAME = "OSHS0403";
     public const int AVATAR_MAX_HUNGRY_LEVEL_1 = 5;
     public const int AVATAR_MAX_SANITY_LEVEL_1 = 5;
     public const int AVATAR_MAX_HUNGRY_LEVEL_2 = 10;
