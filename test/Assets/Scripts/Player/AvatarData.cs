@@ -18,6 +18,7 @@ public class AvatarData
 
     public AvatarData()
     {
+        level = 1;
         hungry = Constant.AVATAR_MAX_HUNGRY_LEVEL_1;
         sanity = Constant.AVATAR_MAX_SANITY_LEVEL_1;
         state = Constant.AvatarState.IDLING;

@@ -40,8 +40,8 @@ public class StatusModalPanel : MonoBehaviour
         name.text = nameToSet;
         status.text = avatarData.state.ToString();
         level.text = avatarData.level.ToString();
-        expr.text = avatarData.experience.ToString();
-        hungry.text = avatarData.hungry.ToString();
-        sanity.text = avatarData.sanity.ToString();
+        expr.text = avatarData.experience.ToString() + "/" + (avatarData.level == 0 ? Constant.AVATAR_EXPR_LEVEL_1_TO_2.ToString() : Constant.AVATAR_EXPR_LEVEL_2_TO_3.ToString());
+        hungry.text = avatarData.hungry.ToString() + "/" + (avatarData.level == 0 ? Constant.AVATAR_MAX_HUNGRY_LEVEL_1.ToString() : Constant.AVATAR_MAX_HUNGRY_LEVEL_2.ToString()); ;
+        sanity.text = avatarData.sanity.ToString() + "/" + (avatarData.level == 0 ? Constant.AVATAR_MAX_SANITY_LEVEL_1.ToString() : Constant.AVATAR_MAX_SANITY_LEVEL_2.ToString()); ;
     }
 }

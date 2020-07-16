@@ -49,8 +49,10 @@ public static class Constant {
     public const string AVATAR3_NAME = "OSHS0403";
     public const int AVATAR_MAX_HUNGRY_LEVEL_1 = 5;
     public const int AVATAR_MAX_SANITY_LEVEL_1 = 5;
+    public const int AVATAR_EXPR_LEVEL_1_TO_2 = 50;
     public const int AVATAR_MAX_HUNGRY_LEVEL_2 = 10;
     public const int AVATAR_MAX_SANITY_LEVEL_2 = 10;
+    public const int AVATAR_EXPR_LEVEL_2_TO_3 = 500;
     public const int AVATAR_LEVEL_1_TO_2_EXPERIENCE = 50;
 
     // Day State constants
