@@ -3,15 +3,15 @@
 public class Reward
 {
     public int energy;
-    public Dictionary<Constant.Item, int> items;
+    public Dictionary<Item, int> items;
 
     public Reward()
     {
         this.energy = 0;
-        this.items = new Dictionary<Constant.Item, int>();
+        this.items = new Dictionary<Item, int>();
     }
 
-    public Reward(int energy, Dictionary<Constant.Item, int> items)
+    public Reward(int energy, Dictionary<Item, int> items)
     {
         this.energy = energy;
         this.items = items;

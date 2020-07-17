@@ -18,6 +18,8 @@ public static class Constant {
 
     // Upgradation constants
     public const int UPGRADATION_DURATION_IN_MINS = 1;
+    public const int UPGRADATION_LEVEL0_TO_LEVEL1_ENERGY_COST = 50;
+    public const int UPGRADATION_LEVEL0_TO_LEVEL1_MATERIAL_COST = 100;
 
     // Dorm constants
     public const int DORM_SANITY_RECOVER_LEVEL_1 = 3;
@@ -38,10 +40,8 @@ public static class Constant {
     public const int CAFE_HUNGRY_RECOVER_LEVEL_2 = 6;
 
     // Advanture constants
-    public const int ADV_HUNGRY_COST_LEVEL_1 = 3;
-    public const int ADV_HUNGRY_COST_LEVEL_2 = 6;
-    public const int ADV_SANITY_COST_LEVEL_1 = 3;
-    public const int ADV_SANITY_COST_LEVEL_2 = 6;
+    static readonly List<KeyValuePair<Item, int>> a = new List<KeyValuePair<Item, int>>();
+    public static readonly Adventure ADVENTURE1 = new Adventure(0, "test", 3, 3, 10, 2, 5, a);
 
     // Avatar constants
     public const string AVATAR1_NAME = "OSHS0401";
@@ -76,12 +76,5 @@ public static class Constant {
         MORNING,
         AFTERNOON,
         NIGHT
-    }
-
-    public enum Item
-    {
-        bibi,
-        aiai,
-        cici
     }
 }

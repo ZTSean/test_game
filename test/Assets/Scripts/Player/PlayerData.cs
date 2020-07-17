@@ -21,7 +21,7 @@ public class PlayerData
     public Constant.DayState dayState;
     public DateTime lastUpdateTime;
     public int dayStateLoopCount;
-    public Dictionary<Constant.Item, int> items;
+    public Dictionary<Item, int> items;
     public PlayerData()
     {
         materialAmount = 0;
@@ -35,7 +35,7 @@ public class PlayerData
         avatarData1 = new AvatarData();
         avatarData2 = new AvatarData();
         avatarData3 = new AvatarData();
-        items = new Dictionary<Constant.Item, int>();
+        items = new Dictionary<Item, int>();
     }
 
     public void UpdateAvatarState(int avatarIndex, Constant.AvatarState state, bool isEndDayStateLoop)
