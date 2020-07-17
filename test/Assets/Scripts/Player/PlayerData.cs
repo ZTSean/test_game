@@ -12,7 +12,6 @@ public class PlayerData
     public int cafeLevel;
     public int factoryLevel;
     public int dormLevel;
-    public int adventureIndex;
     public int level;
     public int numberOfAvatars;
     public AvatarData avatarData1;
@@ -32,9 +31,9 @@ public class PlayerData
         level = 0;
         numberOfAvatars = 3;
         dayState = Constant.DayState.MORNING;
-        avatarData1 = new AvatarData();
-        avatarData2 = new AvatarData();
-        avatarData3 = new AvatarData();
+        avatarData1 = new AvatarData(0);
+        avatarData2 = new AvatarData(1);
+        avatarData3 = new AvatarData(2);
         items = new Dictionary<Item, int>();
     }
 
@@ -44,17 +43,17 @@ public class PlayerData
         switch (avatarIndex)
         {
             case 0:
-                reward = avatarData1.SetState(state, cafeLevel, dormLevel, factoryLevel, adventureIndex, isEndDayStateLoop);
+                reward = avatarData1.SetState(state, cafeLevel, dormLevel, factoryLevel, null, isEndDayStateLoop);
                 break;
             case 1:
-                reward = avatarData2.SetState(state, cafeLevel, dormLevel, factoryLevel, adventureIndex, isEndDayStateLoop);
+                reward = avatarData2.SetState(state, cafeLevel, dormLevel, factoryLevel, null, isEndDayStateLoop);
                 break;
             case 2:
-                reward = avatarData3.SetState(state, cafeLevel, dormLevel, factoryLevel, adventureIndex, isEndDayStateLoop);
+                reward = avatarData3.SetState(state, cafeLevel, dormLevel, factoryLevel, null, isEndDayStateLoop);
                 break;
         }
 
-        if (reward.energy > 0)
+        if (reward.energyGain > 0)
         {
             // Update material cost if from factory working to idling
             if (factoryLevel == 1)
@@ -67,8 +66,8 @@ public class PlayerData
             }
 
             // Update enercy collected if from factory working to idling
-            energyAmount += reward.energy;
-            Debug.Log("Reward: energy get " + reward.energy);
+            energyAmount += reward.energyGain;
+            Debug.Log("Reward: energy get " + reward.energyGain);
         }
 
         // Update collected item from adventure

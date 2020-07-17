@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Adventure
 {
     public int index;
+    public string name;
     public string description;
     public int hungryCost;
     public int sanityCost;
@@ -23,5 +26,12 @@ public class Adventure
         this.energyGain = energyGain;
         this.exprGain = exprGain;
         this.items = items;
+
+        switch(index)
+        {
+            case 0:
+                this.name = "Adventure 1";
+                break;
+        }
     }
 }

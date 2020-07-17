@@ -4582,7 +4582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &526221305
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7698,10 +7698,11 @@ MonoBehaviour:
     cafeLevel: 0
     factoryLevel: 0
     dormLevel: 0
-    adventureIndex: 0
     level: 0
     numberOfAvatars: 3
     avatarData1:
+      index: 0
+      name: 
       sanity: 5
       hungry: 5
       level: 0
@@ -7711,6 +7712,8 @@ MonoBehaviour:
       slotIndex: -1
       isDead: 0
     avatarData2:
+      index: 1
+      name: 
       sanity: 5
       hungry: 5
       level: 0
@@ -7720,6 +7723,8 @@ MonoBehaviour:
       slotIndex: -1
       isDead: 0
     avatarData3:
+      index: 2
+      name: 
       sanity: 5
       hungry: 5
       level: 0
@@ -11274,13 +11279,14 @@ GameObject:
   - component: {fileID: 1173418028}
   - component: {fileID: 1173418027}
   - component: {fileID: 1173418026}
+  - component: {fileID: 1173418029}
   m_Layer: 5
   m_Name: FinalPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1173418025
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11352,6 +11358,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173418024}
   m_CullTransparentMesh: 0
+--- !u!114 &1173418029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173418024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828c54d162163474a99f6a03e5a3c3c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finalAdventureText: {fileID: 694834336}
+  adventureModalPanel: {fileID: 2027808345}
 --- !u!1 &1181263073
 GameObject:
   m_ObjectHideFlags: 0
@@ -12965,7 +12985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1379526573
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15496,6 +15516,17 @@ MonoBehaviour:
       - m_Target: {fileID: 526221304}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2027808345}
+        m_MethodName: StartAdventure
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -18727,7 +18758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2027808342
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18801,6 +18832,9 @@ MonoBehaviour:
   envManager: {fileID: 468231408}
   continueButton: {fileID: 107427863}
   goButton: {fileID: 1689624478}
+  ScenePanel: {fileID: 1456997776}
+  RolePanel: {fileID: 526221304}
+  FinalPanel: {fileID: 1173418024}
   selectedIndexAdventure: -1
   selectedIndexAvatar: -1
 --- !u!1 &2032936195 stripped

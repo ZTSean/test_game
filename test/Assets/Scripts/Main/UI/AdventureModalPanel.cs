@@ -8,31 +8,74 @@ public class AdventureModalPanel : MonoBehaviour
     public MainEnvManager envManager;
     public Button continueButton;
     public Button goButton;
+    public GameObject ScenePanel;
+    public GameObject RolePanel;
+    public GameObject FinalPanel;
     public int selectedIndexAdventure = -1;
     public int selectedIndexAvatar = -1;
 
-    void Start()
+    private Adventure currentSelectedAdventure = null;
+    private AvatarData currentSelectedAvatarData = null;
+
+    private void OnEnable()
     {
         goButton.enabled = false;
         continueButton.enabled = false;
         selectedIndexAdventure = -1;
         selectedIndexAvatar = -1;
+        currentSelectedAdventure = null;
+        ScenePanel.SetActive(true);
+        RolePanel.SetActive(false);
+        FinalPanel.SetActive(false);
     }
 
     public void SetSelectedIndexAdventure(int index)
     {
         this.selectedIndexAdventure = index;
         continueButton.enabled = true;
+
+        currentSelectedAdventure = DetermineAdventure(index);
     }
 
     public void SetSelectedIndexAvatar(int index)
     {
         this.selectedIndexAvatar = index;
+        currentSelectedAvatarData = DetermineAvatar(index);
+    }
+
+    public string FinalAdventureText()
+    {
+        if (selectedIndexAdventure != -1 && selectedIndexAvatar != -1 && currentSelectedAdventure != null && currentSelectedAvatarData != null)
+        {
+            return currentSelectedAvatarData.name + " went to " + currentSelectedAdventure.name;
+        }
+        else
+        {
+            Debug.LogError("Not able to start adventure with adv:" + selectedIndexAdventure + ", ava:" + selectedIndexAvatar);
+            return null;
+        }
     }
 
     public void StartAdventure()
     {
         //validate whether the avatar has enough sanity & hungry
+        if (selectedIndexAdventure != -1 && selectedIndexAvatar != -1 && currentSelectedAdventure != null && currentSelectedAvatarData != null)
+        {
+            // Deduct energy & sanity
+            currentSelectedAvatarData.hungry -= currentSelectedAdventure.hungryCost;
+            currentSelectedAvatarData.sanity -= currentSelectedAdventure.sanityCost;
+
+            currentSelectedAvatarData.SetState(Constant.AvatarState.ADVENTURE,
+                envManager.player.playerData.cafeLevel,
+                envManager.player.playerData.dormLevel,
+                envManager.player.playerData.factoryLevel, 
+                currentSelectedAdventure, 
+                false);
+        }
+        else
+        {
+            Debug.LogError("Not able to start adventure with adv:" + selectedIndexAdventure + ", ava:" + selectedIndexAvatar);
+        }
     }
 
     public bool isEnoughSanityAndHungry(int adventureIndex, int avatarIndex)
@@ -42,9 +85,9 @@ public class AdventureModalPanel : MonoBehaviour
 
         AvatarData avatarData = DetermineAvatar(avatarIndex);
 
-        return avatarData != null && 
-            avatarData.state == Constant.AvatarState.IDLING && 
-            avatarData.hungry >= adventure.hungryCost && 
+        return avatarData != null &&
+            avatarData.state == Constant.AvatarState.IDLING &&
+            avatarData.hungry >= adventure.hungryCost &&
             avatarData.sanity >= adventure.sanityCost;
     }
 
