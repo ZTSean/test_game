@@ -1595,6 +1595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7627ac4c7e3da3f4da5a7700b8806b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  envManager: {fileID: 1189069727}
 --- !u!1 &940534398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2537,10 +2538,11 @@ MonoBehaviour:
     cafeLevel: 0
     factoryLevel: 0
     dormLevel: 0
-    adventureIndex: 0
     level: 0
     numberOfAvatars: 3
     avatarData1:
+      index: 0
+      name: OSHS0401
       sanity: 5
       hungry: 5
       level: 0
@@ -2550,6 +2552,8 @@ MonoBehaviour:
       slotIndex: -1
       isDead: 0
     avatarData2:
+      index: 1
+      name: OSHS0402
       sanity: 5
       hungry: 5
       level: 0
@@ -2559,6 +2563,8 @@ MonoBehaviour:
       slotIndex: -1
       isDead: 0
     avatarData3:
+      index: 2
+      name: OSHS0403
       sanity: 5
       hungry: 5
       level: 0

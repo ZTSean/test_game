@@ -4221,10 +4221,10 @@ MonoBehaviour:
   spaceshipLevel2: {fileID: 682113574}
   inConstructionPrefeb: {fileID: 8965659152607648507, guid: 62c63633bbfff6c46bcff0a242de6471,
     type: 3}
-  backgroundMorning: {fileID: 0}
-  backgroundAfternoon: {fileID: 21300000, guid: 33dae697e9998624fb0c37cbeadf5c19,
+  backgroundMorning: {fileID: 21300000, guid: 35d11d45099cb6444a038a72c23517d7, type: 3}
+  backgroundAfternoon: {fileID: 21300000, guid: 206a327acd6a4204d94040a562db4536,
     type: 3}
-  backgroundNight: {fileID: 21300000, guid: 896613ee38b7b5a45a9fcfc1806a49c1, type: 3}
+  backgroundNight: {fileID: 21300000, guid: 44ba41d1781496c41a708ce89c6d2f3a, type: 3}
   backgroundGameobject: {fileID: 1921900905}
 --- !u!4 &468231409
 Transform:
@@ -14511,6 +14511,17 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 583627577}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1379526572}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:

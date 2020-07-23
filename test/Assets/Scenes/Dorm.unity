@@ -516,7 +516,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -95
   m_Sprite: {fileID: 21300000, guid: 8afa927e2126b5245ba54073a947c6f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -979,7 +979,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -95
   m_Sprite: {fileID: 21300000, guid: 2915f6ea0d808f54f8f5f7ec4076ccb6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1295,10 +1295,11 @@ MonoBehaviour:
     cafeLevel: 0
     factoryLevel: 0
     dormLevel: 0
-    adventureIndex: 0
     level: 0
     numberOfAvatars: 3
     avatarData1:
+      index: 0
+      name: OSHS0401
       sanity: 5
       hungry: 5
       level: 0
@@ -1308,6 +1309,8 @@ MonoBehaviour:
       slotIndex: -1
       isDead: 0
     avatarData2:
+      index: 1
+      name: OSHS0402
       sanity: 5
       hungry: 5
       level: 0
@@ -1317,6 +1320,8 @@ MonoBehaviour:
       slotIndex: -1
       isDead: 0
     avatarData3:
+      index: 2
+      name: OSHS0403
       sanity: 5
       hungry: 5
       level: 0

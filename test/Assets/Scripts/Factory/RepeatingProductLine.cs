@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RepeatingProductLine : MonoBehaviour
 {
+    public EnvManage envManager;
     float scrollSpeed = 5.1f;
     Vector2 startPos;
 
@@ -16,7 +17,12 @@ public class RepeatingProductLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float newPos = Mathf.Repeat(Time.time * scrollSpeed, 12.48f);
-        transform.position = startPos + Vector2.right * newPos;
+        if (envManager.player.playerData.avatarData1.state == Constant.AvatarState.WORKING ||
+            envManager.player.playerData.avatarData2.state == Constant.AvatarState.WORKING ||
+            envManager.player.playerData.avatarData3.state == Constant.AvatarState.WORKING)
+        {
+            float newPos = Mathf.Repeat(Time.time * scrollSpeed, 12.48f);
+            transform.position = startPos + Vector2.right * newPos;
+        }
     }
 }
