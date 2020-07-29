@@ -11,8 +11,10 @@ public class avatarMainScene : MonoBehaviour
 
     Vector2 initialPosition;
 
+    public const string ANIMATOR_IS_IN_IDLING_PROPERTY_NAME = "isIdling";
     public const string ANIMATOR_IS_IN_LOW_HUNGRY_PROPERTY_NAME = "isLowHungry";
     public const string ANIMATOR_IS_IN_LOW_SANITY_PROPERTY_NAME = "isLowSanity";
+    public const string ANIMATOR_IS_IN_LOW_HUNGRY_SANITY_PROPERTY_NAME = "isLowHungrySanity";
     public const string ANIMATOR_IS_IN_DEAD_PROPERTY_NAME = "isDead";
 
     void Start()
@@ -27,18 +29,27 @@ public class avatarMainScene : MonoBehaviour
 
     public void LoadData(AvatarData avatarData)
     {
-        this.state = avatarData.state;
-        switch(state)
+        bool isLowHungry = avatarData.hungry <= 2;
+        bool isLowSanity = avatarData.sanity <= 2;
+        if (avatarData.isDead)
         {
-            case Constant.AvatarState.LOW_HUNGRY:
-                ChangeAnimation(ANIMATOR_IS_IN_LOW_HUNGRY_PROPERTY_NAME, true);
-                break;
-            case Constant.AvatarState.LOW_SANITY:
-                ChangeAnimation(ANIMATOR_IS_IN_LOW_SANITY_PROPERTY_NAME, true);
-                break;
-            case Constant.AvatarState.DEAD:
-                ChangeAnimation(ANIMATOR_IS_IN_DEAD_PROPERTY_NAME, true);
-                break;
+            ChangeAnimation(ANIMATOR_IS_IN_DEAD_PROPERTY_NAME, true);
+        }
+        else if (isLowHungry && isLowSanity)
+        {
+            ChangeAnimation(ANIMATOR_IS_IN_LOW_HUNGRY_SANITY_PROPERTY_NAME, true);
+        }
+        else if (isLowHungry)
+        {
+            ChangeAnimation(ANIMATOR_IS_IN_LOW_HUNGRY_PROPERTY_NAME, true);
+        }
+        else if (isLowSanity)
+        {
+            ChangeAnimation(ANIMATOR_IS_IN_LOW_SANITY_PROPERTY_NAME, true);
+        }
+        else
+        {
+            ChangeAnimation(ANIMATOR_IS_IN_IDLING_PROPERTY_NAME, true);
         }
     }
 

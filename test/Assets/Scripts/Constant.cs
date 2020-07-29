@@ -65,10 +65,7 @@ public static class Constant {
          WORKING,
          IDLING,
          EATING,
-         ADVENTURE,
-         LOW_HUNGRY,
-         LOW_SANITY,
-         DEAD
+         ADVENTURE
     }
 
     public enum DayState
